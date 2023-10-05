@@ -9,9 +9,6 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'netlify-edge',
   },
-  runtimeConfig: {
-    databaseUrl: '123',
-  },
 
   modules: [
     ['@nuxtjs/tailwindcss', {

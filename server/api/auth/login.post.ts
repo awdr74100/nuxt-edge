@@ -1,8 +1,6 @@
 import { z } from 'zod'
 
-import bcrypt from 'bcryptjs'
-
-// import { verify } from 'argon2'
+import { verify } from 'argon2'
 
 export default defineEventHandler(async (event) => {
   try {
@@ -31,8 +29,8 @@ export default defineEventHandler(async (event) => {
     if (!user)
       throw createError({ message: 'user not found', statusCode: 400 })
 
-    const passwordVerified = await bcrypt.compare(password, user.password)
-    // const passwordVerified = await verify(user.password, password)
+    // const passwordVerified = await bcrypt.compare(password, user.password)
+    const passwordVerified = await verify(user.password, password)
 
     if (!passwordVerified)
       throw createError({ message: 'password not correct', statusCode: 400 })

@@ -1,8 +1,8 @@
 import { z } from 'zod'
 
-import bcrypt from 'bcryptjs'
+// import bcrypt from 'bcryptjs'
 
-// import { hash } from 'argon2'
+import { hash } from 'argon2'
 
 export default defineEventHandler(async (event) => {
   try {
@@ -13,8 +13,8 @@ export default defineEventHandler(async (event) => {
       password: z.string().min(6).max(14),
     }).parseAsync(body)
 
-    // const hashedPassword = await hash(password)
-    const hashedPassword = await bcrypt.hash(password, 8)
+    const hashedPassword = await hash(password)
+    // const hashedPassword = await bcrypt.hash(password, 8)
 
     const prisma = usePrisma()
 
