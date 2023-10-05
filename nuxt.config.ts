@@ -10,7 +10,7 @@ export default defineNuxtConfig({
     preset: 'netlify-edge',
   },
   runtimeConfig: {
-    NUXT_DATABASE_URL: '',
+    databaseUrl: '123',
   },
 
   modules: [

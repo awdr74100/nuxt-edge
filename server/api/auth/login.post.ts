@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
   try {
     const body = await readBody(event)
 
-    const { email,password } = await z.object({
+    const { email, password } = await z.object({
       email: z.string().email(),
       password: z.string().min(6).max(14),
     }).parseAsync(body)
@@ -30,7 +30,6 @@ export default defineEventHandler(async (event) => {
 
     if (!user)
       throw createError({ message: 'user not found', statusCode: 400 })
-
 
     const passwordVerified = await bcrypt.compare(password, user.password)
     // const passwordVerified = await verify(user.password, password)
