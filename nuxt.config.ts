@@ -7,7 +7,7 @@ export default defineNuxtConfig({
     shim: false,
   },
   nitro: {
-    preset: 'netlify-edge',
+    preset: 'netlify',
   },
   modules: [
     ['@nuxtjs/tailwindcss', {
