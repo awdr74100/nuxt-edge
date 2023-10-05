@@ -6,9 +6,9 @@ export default defineNuxtConfig({
   typescript: {
     shim: false,
   },
-  nitro: {
-    preset: 'netlify',
-  },
+  // nitro: {
+  //   preset: 'netlify',
+  // },
   modules: [
     ['@nuxtjs/tailwindcss', {
       viewer: false,
