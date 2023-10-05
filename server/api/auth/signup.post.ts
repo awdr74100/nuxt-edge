@@ -1,5 +1,6 @@
 import { z } from 'zod'
-import bcrypt from 'bcryptjs'
+
+// import bcrypt from 'bcryptjs'
 
 // import { hash } from 'argon2'
 
@@ -13,14 +14,14 @@ export default defineEventHandler(async (event) => {
     }).parseAsync(body)
 
     // const hashedPassword = await hash(password)
-    const hashedPassword = await bcrypt.hash(password, 8)
+    // const hashedPassword = await bcrypt.hash(password, 8)
 
     const prisma = usePrisma()
 
     const user = await prisma.user.create({
       data: {
         email,
-        password: hashedPassword,
+        password,
         roles: {
           create: [
             {
@@ -46,7 +47,7 @@ export default defineEventHandler(async (event) => {
   catch (error) {
     // eslint-disable-next-line no-console
     console.log(error)
-    
+
     return { success: false, error }
   }
 })
